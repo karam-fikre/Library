@@ -18,6 +18,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LibraryData\LibraryData.csproj" />
+    <ProjectReference Include="..\LibraryServices.cs\LibraryServices.cs.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\LibraryAssetsImages\" />
   </ItemGroup>
 
 </Project>

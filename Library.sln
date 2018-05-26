@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library\Library.csproj", "{8C70D72F-A026-43ED-8302-73ED531A4092}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "Library\Library.csproj", "{8C70D72F-A026-43ED-8302-73ED531A4092}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryData", "LibraryData\LibraryData.csproj", "{A043D377-FA78-4C44-AE68-1A845036913D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryData", "LibraryData\LibraryData.csproj", "{A043D377-FA78-4C44-AE68-1A845036913D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryServices.cs", "LibraryServices.cs\LibraryServices.cs.csproj", "{A418A7A8-B0B7-4D12-A133-21A0FBFDA22C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A043D377-FA78-4C44-AE68-1A845036913D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A043D377-FA78-4C44-AE68-1A845036913D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A043D377-FA78-4C44-AE68-1A845036913D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A418A7A8-B0B7-4D12-A133-21A0FBFDA22C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A418A7A8-B0B7-4D12-A133-21A0FBFDA22C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A418A7A8-B0B7-4D12-A133-21A0FBFDA22C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A418A7A8-B0B7-4D12-A133-21A0FBFDA22C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
