@@ -18,7 +18,7 @@
                 {
                 <tr class="assetRow">
                     <td class="">
-                        <a asp-controller="Catalog" asp-action="Detail?@asset.Id">
+                        <a asp-controller="Catalog" asp-action="Detail" asp-route-Id="@asset.Id" >
                             <img src="@asset.ImageUrl" class="imageCell" />
                         </a>
                     </td>
