@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "Library\Library.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryData", "LibraryData\LibraryData.csproj", "{A043D377-FA78-4C44-AE68-1A845036913D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryServices.cs", "LibraryServices.cs\LibraryServices.cs.csproj", "{A418A7A8-B0B7-4D12-A133-21A0FBFDA22C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryServices.cs", "LibraryServices.cs\LibraryServices.cs.csproj", "{A418A7A8-B0B7-4D12-A133-21A0FBFDA22C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryTest", "LibraryTest\LibraryTest.csproj", "{8CB05A49-9088-4F63-9384-DB09BE97F4AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{A418A7A8-B0B7-4D12-A133-21A0FBFDA22C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A418A7A8-B0B7-4D12-A133-21A0FBFDA22C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A418A7A8-B0B7-4D12-A133-21A0FBFDA22C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CB05A49-9088-4F63-9384-DB09BE97F4AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CB05A49-9088-4F63-9384-DB09BE97F4AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CB05A49-9088-4F63-9384-DB09BE97F4AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CB05A49-9088-4F63-9384-DB09BE97F4AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
