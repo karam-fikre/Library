@@ -80,7 +80,7 @@ namespace Library.Controllers
         {
             var asset = _assets.GetById(id);
             
-            var model = new Models.CheckoutModels.Checkout
+            var model = new Models.CheckoutModels.CheckoutModel
             {
                 AssetId = id,
                 Title = asset.Title,
@@ -103,7 +103,7 @@ namespace Library.Controllers
         {
             var asset = _assets.GetById(id);
 
-            var model = new Models.CheckoutModels.Checkout
+            var model = new Models.CheckoutModels.CheckoutModel
             {
                 AssetId = id,
                 Title = asset.Title,

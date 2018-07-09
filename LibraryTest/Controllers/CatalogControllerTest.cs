@@ -1,6 +1,6 @@
 ﻿using Library.Controllers;
-using Library.Models.Branch;
 using Library.Models.Catalog;
+using Library.Models.CheckoutModels;
 using LibraryData;
 using LibraryData.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -59,9 +59,9 @@ namespace LibraryTest.Controllers
             });
             mockCheckoutService.Setup(r => r.GetLatestCheckout(24)).Returns(new Checkout());
             mockCheckoutService.Setup(r => r.GetCurrentHoldPatronName(24)).Returns("NANCY");
-            var sut = new CatalogController(mockLibraryAssetService.Object, mockCheckoutService.Object);
+            var controller = new CatalogController(mockLibraryAssetService.Object, mockCheckoutService.Object);
 
-            var result = sut.Detail(24);
+            var result = controller.Detail(24);
             var viewResult = Assert.IsType<ViewResult>(result);
             var model = Assert.IsType<AssetDetailModel>(
                 viewResult.ViewData.Model);
@@ -69,6 +69,149 @@ namespace LibraryTest.Controllers
 
 
         }
+
+
+
+        [Fact]
+        public void ReturnCheckoutViewAndModel(){
+            var mockLibraryAssetService = new Mock<ILibraryAsset>();
+            var mockCheckoutService = new Mock<ICheckout>();
+
+            mockLibraryAssetService.Setup(r=>r.GetById(24)).Returns(GetAsset);
+
+            var controller = new CatalogController(mockLibraryAssetService.Object,mockCheckoutService.Object);
+
+            var result = controller.Checkout(24);
+
+            var viewResult = Assert.IsType<ViewResult>(result);
+
+            var model= Assert.IsType<CheckoutModel>(viewResult.Model);
+            
+            Assert.Equal("Orlando",model.Title);
+
+        }
+
+
+
+
+        [Fact]
+        public void ReturnCheckInViewAndModel(){
+            var mockLibraryAssetService = new Mock<ILibraryAsset>();
+            var mockCheckoutService = new Mock<ICheckout>();
+
+            mockLibraryAssetService.Setup(r => r.GetById(24)).Returns(GetAsset);
+
+            mockLibraryAssetService.Setup(r => r.GetCurrentLocation(24)).Returns(new LibraryBranch
+            {
+                Name = "Hawkins Library"
+            });
+
+            var controller = new CatalogController(mockLibraryAssetService.Object, mockCheckoutService.Object);
+
+            var result = controller.Detail(24);
+
+           var viewResult =  Assert.IsType<ViewResult>(result);
+
+           var model = Assert.IsType<AssetDetailModel>(viewResult.Model);
+
+            Assert.Equal("Orlando",model.Title);
+            
+        }
+
+
+
+        [Fact]
+        public void ReturnCheckoutModelWhenHoldCalled(){
+            var mockLibraryAssetService = new Mock<ILibraryAsset>();
+            var mockCheckoutService = new Mock<ICheckout>();
+
+            mockLibraryAssetService.Setup(r => r.GetById(24)).Returns(GetAsset);
+
+            var controller = new CatalogController(mockLibraryAssetService.Object,mockCheckoutService.Object);
+
+            var result = controller.Hold(24);
+
+            var viewResult = Assert.IsType<ViewResult>(result);
+
+            var model = Assert.IsType<CheckoutModel>(viewResult.Model);
+
+            Assert.Equal("Orlando",model.Title);
+        }
+
+
+
+
+        [Fact]
+        public void ReturnMarkLostAndRedirect()
+        {
+            var mockLibraryAssetService = new Mock<ILibraryAsset>();
+            var mockCheckoutService = new Mock<ICheckout>();
+            mockLibraryAssetService.Setup(r => r.GetById(24)).Returns(GetAsset());
+            var controller = new CatalogController(mockLibraryAssetService.Object, mockCheckoutService.Object);
+
+            var result= controller.MarkLost(24);
+
+            mockCheckoutService.Verify(s => s.MarkLost(24), Times.Once());
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+
+            Assert.Equal("Detail", redirectResult.ActionName);
+        }
+
+
+
+        [Fact]
+        public void ReturnMarkFoundAndRedirect()
+        {
+            var mockLibraryAssetService = new Mock<ILibraryAsset>();
+            var mockCheckoutService = new Mock<ICheckout>();
+            mockLibraryAssetService.Setup(r => r.GetById(24)).Returns(GetAsset());
+            var controller = new CatalogController(mockLibraryAssetService.Object, mockCheckoutService.Object);
+
+            var result=controller.MarkFound(24);
+
+            mockCheckoutService.Verify(s => s.MarkFound(24), Times.Once());
+
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+
+            Assert.Equal("Detail", redirectResult.ActionName);
+        }
+
+
+        [Fact]
+        public void ReturnCheckoutAndRedirectItemWhenPlaceCheckoutCalled()
+        {
+            var mockLibraryAssetService = new Mock<ILibraryAsset>();
+            var mockCheckoutService = new Mock<ICheckout>();
+            mockLibraryAssetService.Setup(r => r.GetById(24)).Returns(GetAsset());
+            var controller = new CatalogController(mockLibraryAssetService.Object, mockCheckoutService.Object);
+
+            var result = controller.PlaceCheckout(24, 1);
+
+            mockCheckoutService.Verify(s => s.CheckOutItem(24, 1), Times.Once());
+           
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+
+            Assert.Equal("Detail",redirectResult.ActionName);
+        }
+
+
+        [Fact]
+        public void ReturnCheckoutAndRedirectItemWhenPlaceHoldCalled()
+        {
+            var mockLibraryAssetService = new Mock<ILibraryAsset>();
+            var mockCheckoutService = new Mock<ICheckout>();
+            mockLibraryAssetService.Setup(r => r.GetById(24)).Returns(GetAsset());
+            var controller = new CatalogController(mockLibraryAssetService.Object, mockCheckoutService.Object);
+
+            var result = controller.PlaceHold(24, 1);
+
+            mockCheckoutService.Verify(s => s.PlaceHold(24, 1), Times.Once());
+
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+
+            Assert.Equal("Detail", redirectResult.ActionName);
+        }
+
 
 
 

@@ -29,7 +29,7 @@ namespace Library.Controllers
                 LibraryCardId=p.LibraryCard.Id,
                 OverdueFees=p.LibraryCard.Fees,
                 HomeLibraryBranch=p.HomeLibraryBranch.Name
-            }).ToList();
+            });
 
             var model = new PatronIndexModel()
             {

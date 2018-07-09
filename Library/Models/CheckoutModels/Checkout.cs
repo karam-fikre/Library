@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Library.Models.CheckoutModels
 {
-    public class Checkout
+    public class CheckoutModel
     {
         public string LibraryCardId { get; set; }
         public string Title { get; set; }
